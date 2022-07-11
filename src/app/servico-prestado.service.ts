@@ -16,4 +16,12 @@ export class ServicoPrestadoService {
     return this.http.post<ServicoPrestado>(this.apiURL, servicoPrestado)
   }
 
+  buscar(nome: string, mes: number){
+    const httpParams = new HttpParams()
+    set("nome", nome)
+    set("mes", mes ? mes.toString() : "")
+    const url = this.apiURL + "?" + httpParams.toString();
+    return this.http.get<any>(url);
+  }
+
 }
